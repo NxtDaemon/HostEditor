@@ -2,6 +2,7 @@ import os
 import shutil
 import argparse
 
+
 class Color:
     'Class for Colors to be used in Execution'
     PURPLE = '\033[95m'
@@ -16,8 +17,9 @@ class Color:
 
     QuestionColor = BOLD+YELLOW
     ErrorColor = RED+BOLD
-    InfoColor = CYAN 
+    InfoColor = CYAN
     SuccessColor = GREEN
+
 
 class Notify():
 	'Managed what type of message is sent'
@@ -40,16 +42,22 @@ class Notify():
 
 
 class ManageHosts():
-	def AppendHosts(Entry):
-		try:
-			os.system(f"""sudo sh -ce "echo {Entry} >> /etc/hosts" """)
-			return(0)
-		except Exception as Err:
-			Notify.Error(f"Error Found : '{Err}'")
-			return(1)
+    def __init__(self):
+        self.chaining = [';','&','&&','|','||']
 
-	def RemoveHosts():
-		print("Function to be Written later")
+    def AppendHosts(self, Entry):
+        try:
+            for _ in self.chaining:
+                Entry = Entry.replace(_,"")
+            os.system(f"""sudo sh -ce "echo {Entry} >> /etc/hosts" """)
+            return(0)
+        
+        except Exception as Err:
+        	Notify.Error(f"Error Found : '{Err}'")
+        	return(1)
+    
+    def RemoveHosts(self):
+        print("Function to be Written later")
 
 # Argparse 
 Parser = argparse.ArgumentParser()
@@ -68,7 +76,8 @@ def main():
 	Hosts = " ".join(Hostname)
 	Entry = f"{IP} {Hosts}"
 	Notify.Info("Generated Entry")
-	Failure = ManageHosts.AppendHosts(Entry) 
+	m = ManageHosts()
+	Failure = m.AppendHosts(Entry) 
 	if Failure: Notify.Error("Program Failed") ; exit()
 	Notify.Success("Added Entry to /etc/hosts")
 
