@@ -2,9 +2,7 @@ import os
 import shutil
 import argparse
 
-<<<<<<< HEAD
 
-=======
 # Written By NxtDaemon Any Issues or Additions you would like please contact me here https://nxtdaemon.xyz/contact
 #  __    __            __     _______                                                   
 # |  \  |  \          |  \   |       \                                                  
@@ -16,7 +14,6 @@ import argparse
 # | ▓▓  \▓▓▓  ▓▓ \▓▓\  \▓▓  ▓▓ ▓▓    ▓▓\▓▓    ▓▓\▓▓     \ ▓▓ | ▓▓ | ▓▓\▓▓    ▓▓ ▓▓  | ▓▓ 
 #  \▓▓   \▓▓\▓▓   \▓▓   \▓▓▓▓ \▓▓▓▓▓▓▓  \▓▓▓▓▓▓▓ \▓▓▓▓▓▓▓\▓▓  \▓▓  \▓▓ \▓▓▓▓▓▓ \▓▓   \▓▓
                                                                                       
->>>>>>> d6f21805e640926479ac37a55e3241a8291898ea
 class Color:
     'Class for Colors to be used in Execution'
     PURPLE = '\033[95m'
