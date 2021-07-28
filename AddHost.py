@@ -49,7 +49,7 @@ class ManageHosts():
         try:
             for _ in self.chaining:
                 Entry = Entry.replace(_,"")
-            os.system(f"""sudo sh -ce "echo {Entry} >> /etc/hosts" """)
+            os.system(f"""sudo sh -ce "echo '{Entry}' >> /etc/hosts" """)
             return(0)
         
         except Exception as Err:
